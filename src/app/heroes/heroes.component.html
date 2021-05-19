@@ -1,0 +1,43 @@
+<h2>Mis heroes Favoritos</h2>
+<ul class="heroes">
+    <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+        <span class="badge">{{hero.id}}</span> <span class="hero-name">  {{hero.name}}</span>
+    </li>
+</ul>
+<div *ngIf="selectedHero">
+    <h2>{{selectedHero.name | uppercase}} detalles</h2>
+    <div><span>id: </span>{{selectedHero.id}}</div>
+    <div>
+        <label class="detalle-text" for="hero-name">Heroe Nombre: </label>
+        <input class="detalle-text" id="hero-name" [(ngModel)]="selectedHero.name" placeholder="nombre">
+    </div>
+
+    <div>
+        <label class="detalle-text" for="hero-edad">Heroe Edad: </label>
+        <input class="detalle-text" id="hero-edad" [(ngModel)]="selectedHero.edad" placeholder="edad">
+    </div>
+
+    <div>
+        <label class="detalle-text" for="hero-superpoder">Heroe Superpoder: </label>
+        <input class="detalle-text" id="hero-superpoder" [(ngModel)]="selectedHero.superpoder" placeholder="superpoder">
+    </div>
+    <div>
+        <label class="detalle-text" for="hero-identidad">Heroe Identidad: </label>
+        <input class="detalle-text" id="hero-identidad" [(ngModel)]="selectedHero.identidad" placeholder="identidad">
+    </div>
+    <div>
+        <label class="detalle-text" for="hero-universo">Heroe universo: </label>
+        <input class="detalle-text" id="hero-universo" [(ngModel)]="selectedHero.universo" placeholder="universo">
+    </div>
+</div>
+
+
+
+<div *ngIf="lista_mensajes.length!=0">
+    <h1>MENSAJES</h1>
+    <input (click)="limpiar()" type="button" value="LIMPIAR MENSAJES" />
+    <p>HeroService fetched heroes</p>
+    <div *ngFor="let mensaje of lista_mensajes">
+        <p>HeroesComponent Selected hero id = {{mensaje.id}}</p>
+    </div>
+</div>
